@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body class="min-vh-100 d-flex flex-column">
+
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-black">
+
+            <div class="container-fluid">
+                <a class="navbar-brand mx-2" th:href="@{/books/all}"><img th:src="@{/img/logo02.png}" alt="Logo-BookStore" title="Logo-BookStore" width="240" height="60"  >
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link active mx-2" aria-current="page" th:href="@{/books/all}">Home</a>
+                        <a class="nav-link mx-2" th:href="@{/user/profile}" th:text="${username}"></a>
+                        <a th:href="@{/books/add}" class="nav-link mx-2"
+                           sec:authorize="hasRole('ADMIN')">
+                            Add Book
+                        </a>
+                        <a class="nav-link mx-2" th:href="@{/logout}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row d-flex justify-content-center align-items-center my-5 w-100">
+            <div class="col-md-6 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Order Confirmation</h3>
+                        <div class="row">
+                            <div class="">
+                                <h5 class="card-subtitle text-center mb-2">The Details:</h5>
+                                <p><strong>ISBN:   </strong><span>&emsp;</span><span th:text="${book.isbn}">978-0451524935</span> </p>
+                                <p><strong>Title:  </strong><span>&emsp;</span><span th:text="${book.title}">To Kill a Mockingbird</span> </p>
+                                <p><strong>Author: </strong><span>&emsp;</span><span th:text="${book.author}">Harper Lee</span> </p>
+                                <p><strong>Publisher: </strong><span>&emsp;</span><span th:text="${book.publisher}">Harper Perennial Modern Classics</span> </p>
+                                <p><strong>Price:  </strong><span>&emsp;</span><span th:text="${book.price}">$10.99</span><span> $</span> </p>
+                            </div>
+                            <!--<div class="col-md-6">
+                                <h5 class="card-subtitle mb-2">Order Information:</h5>
+                                <p><strong>Order Number:</strong> #123456</p>
+                                <p><strong>Date:</strong> January 1, 2024</p>
+                                <p><strong>Time:</strong> 10:30 AM</p>
+                            </div>-->
+                        </div>
+                        <div class="text-center mt-4">
+                            <p>Your order has been confirmed. Thank you for shopping with us!</p>
+                            <a href="/books/all" class="btn btn-primary">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white bg-dark mt-auto" >
+            <!-- Copyright -->
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #3b5998;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-facebook-f"></i
+                    ></a>
+
+                    <!-- Twitter -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #55acee;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-twitter"></i
+                    ></a>
+
+                    <!-- Google -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #dd4b39;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-google"></i
+                    ></a>
+
+                    <!-- Instagram -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #ac2bac;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-instagram"></i
+                    ></a>
+
+                    <!-- Linkedin -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #0082ca;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    <!-- Github -->
+                    <a
+                            data-mdb-ripple-init
+                            class="btn text-white btn-floating m-1"
+                            style="background-color: #333333;"
+                            href="#!"
+                            role="button"
+                    ><i class="fab fa-github"></i
+                    ></a>
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                &copy; 2024. BookStore All Rights Reserved.
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
